@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 //Action Types
-const GET_CAMPUS = 'GET_CAMPUS'
 const GET_CAMPUSES = 'GET_CAMPUSES'
 
 //Action Creators
@@ -18,7 +17,7 @@ export const getCampuses = (campuses) => {
 //Thunk Creators
 export function fetchCampuses() {
     return function thunk(dispatch) {
-        return axios.get('api/campuses')
+        return axios.get('/api/campuses')
         .then(res => res.data)
         .then (campuses => {
             const action = getCampuses(campuses)
@@ -30,7 +29,6 @@ export function fetchCampuses() {
 
 //Reducer
 
-const state = []
 export default function reducer(state = [], action) {
     switch (action.type) {
         case GET_CAMPUSES:

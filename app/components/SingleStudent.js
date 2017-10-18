@@ -1,19 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Route, Link } from 'react-router-dom'
 
-const singleStudent = ({ student }) => {
-    if (!student) return <div />
+
+const singleStudent = ({ student, campuses }) => {
+    if (!student) return <div/>
     return (
         <div>
             <h1>{student.name}</h1>
-            <h4>{student.campus.name}</h4>
+            <Link to={`/campuses/${student.campusId}`}>
+                <h4>{student.campus.name}</h4>
+            </Link>
             <img src={student.image} />
-        </div>
+        </div>   
     )
 }
 
-const mapState = ({ students }, Ownprops) => ({
-    //student : students.forEach(student => console.log(student.id))   
+const mapState = ({ students, campuses }, Ownprops) => ({
+    campus: campuses,
     student: students.find(student => student.id === +Ownprops.match.params.studentId)
 })
 

@@ -17,5 +17,15 @@
     width : 96.5vw;
    }
  
+  .campus-album {
+    height: 300px;
+    /*width: 400px;*/
+    overflow: hidden;
+}
+
+.campus-album img {
+    height: 100%;
+    width: 100%;
+}
   
   
