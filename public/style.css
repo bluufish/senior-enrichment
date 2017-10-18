@@ -5,4 +5,17 @@
   body {
     margin: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color : #0CC1FF;
   }
+
+  #main {
+    
+  }
+
+  #home img{
+    height : 100vh;
+    width : 96.5vw;
+   }
+ 
+  
+  
