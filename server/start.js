@@ -3,6 +3,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const {resolve} = require('path')
+const api = require('./api/')
 
 const app = express()
 
@@ -36,10 +37,17 @@ if (module === require.main) {
 
   const PORT = 1337
 
-  const db = require('../db')
+  const db = require('./db')
   db.sync()
   .then(() => {
     console.log('db synced')
     app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
   });
 }
+
+
+
+// error handling endware
+app.use((err, req, res, next) =>
+res.status(err.status || 500).send(err.message || 'Internal server error.')
+);
