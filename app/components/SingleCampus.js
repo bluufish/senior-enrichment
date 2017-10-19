@@ -3,16 +3,21 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import StudentAlbum from './StudentAlbum'
 import StudentList from './StudentList'
+import DeleteButton from './FunctionButton'
+import {deleteCampus} from '../store'
 
 
-const singleCampus = ({ campus, students }) => {
+const singleCampus = ({ campus, students, remove }) => {
     if (!campus) return <div />
     return (
         <div>
             <h1>{campus.name}</h1>
-            <img src={campus.image} />
-            <StudentAlbum students={students}/>
-            <StudentList students={students}/>
+            <div>
+                <img src={campus.image} />
+                <DeleteButton func={remove} item={campus} text={'Delete'} />
+            </div>
+            <StudentAlbum students={students} />
+            <StudentList students={students} />
         </div>
     )
 }
@@ -22,5 +27,9 @@ const mapState = ({ students, campuses }, Ownprops) => ({
     campus: campuses.find(campus => campus.id === +Ownprops.match.params.campusId)
 })
 
-export default connect(mapState)(singleCampus)
+const mapDispatch = (dispatch) => ({
+    remove: (campus) => {dispatch(deleteCampus(campus))}
+}) 
+
+export default connect(mapState,mapDispatch)(singleCampus)
 

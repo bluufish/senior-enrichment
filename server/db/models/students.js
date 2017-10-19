@@ -19,7 +19,7 @@ module.exports = db.define('student', {
     },
     image: {
         type: Sequelize.STRING,
-        defaultValue: 'https://i.imgur.com/CXItI2O.png'
+        defaultValue: 'https://myanimelist.cdn-dena.com/images/characters/14/173325.jpg'
     }
 },
     {

@@ -17,7 +17,7 @@ const Navbar = () => (
                         <NavLink to='/students' activeClassName="selected">Students</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/students/add' activeClassName="selected">Add Students</NavLink>
+                        <NavLink to='/students/add' activeClassName="selected">Add Student</NavLink>
                     </li>
                     <li>
                         <NavLink to='/campuses/add' activeClassName="selected">Add Campus</NavLink>

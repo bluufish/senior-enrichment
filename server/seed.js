@@ -12,7 +12,7 @@ const data = {
   campus: [
     {
       name: 'Hibike Euphonium',
-      image : 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Hibike%21_Euphonium_logo.png'
+      image: 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Hibike%21_Euphonium_logo.png'
     },
     {
       name: 'Chuu2Byou',
@@ -24,7 +24,7 @@ const data = {
     },
     {
       name: 'Hyouka',
-      image : 'https://fanart.tv/fanart/tv/257764/hdtvlogo/hyouka-573a027d39d9b.png'
+      image: 'https://fanart.tv/fanart/tv/257764/hdtvlogo/hyouka-573a027d39d9b.png'
     }
   ],
   student: [

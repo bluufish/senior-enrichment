@@ -4,8 +4,8 @@ const { Campus, Student } = require('../../db/models');
 //Get all students 
 router.get('/', (req, res, next) => {
     Student.findAll()
-    .then(students => res.json(students))
-    .catch(next);
+        .then(students => res.json(students))
+        .catch(next);
 })
 
 // Get a student by ID
@@ -13,20 +13,21 @@ router.get('/:id', (req, res, next) => {
     const id = req.params.id;
 
     Student.findById(id)
-    .then(student => res.json(student))
-    .catch(next);
+        .then(student => res.json(student))
+        .catch(next);
 })
 
 //Post new student
 router.post('/add', (req, res, next) => {
-    Student.create(req.body) 
-    .then(student => res.json(student))
+    Student.create(req.body)
+    .then(newStudent => Student.findById(newStudent.id))
+    .then(foundStudent => res.json(foundStudent))
     .catch(next)
 })
 
 //Put updated student info for one student
-router.put('/', (req,res,next) => {
- 
+router.put('/', (req, res, next) => {
+
 })
 
 //Delete a student
@@ -34,8 +35,8 @@ router.delete('/:id', function (req, res, next) {
     const id = req.params.id;
 
     Student.destroy({ where: { id } })
-    .then(() => res.status(204).end())
-    .catch(next);
+        .then(() => res.status(204).end())
+        .catch(next);
 });
 
 module.exports = router 

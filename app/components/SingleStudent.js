@@ -4,7 +4,7 @@ import { Route, Link } from 'react-router-dom'
 
 
 const singleStudent = ({ student, campuses }) => {
-    if (!student) return <div />
+    if (!student) return <div/>
     return (
         <div>
             <h1>{student.name} </h1>

@@ -17,7 +17,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 //Post new campus
-router.post('/', (req, res, next) => {
+router.post('/add', (req, res, next) => {
     Campus.create(req.body)
         .then(campus => res.json(campus))
         .catch(next)

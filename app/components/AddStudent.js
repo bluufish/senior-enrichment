@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import { connect } from 'react-redux'
 import {createStudent} from '../reducers/studentReducer'
+
 
 class AddButton extends Component {
     constructor(props) {
@@ -53,14 +53,14 @@ class AddButton extends Component {
 }
 
 const mapState = null
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch, Ownprops) => {
     return {
         submitHandler: (event) => {
             const name = event.target.studentName.value || 'Mobu'
-            const email = event.target.studentEmail.value || 'Kyoani@Kyoani.com'
+            const email = event.target.studentEmail.value 
             const campusId = event.target.selectedCampus.value 
             const student = {name, email, campusId}
-            dispatch(createStudent(student))
+            dispatch(createStudent(student, Ownprops.history))
         }
     }
 }
