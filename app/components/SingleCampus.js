@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import StudentAlbum from './StudentAlbum'
+import StudentList from './StudentList'
+
 
 const singleCampus = ({ campus, students }) => {
     if (!campus) return <div />
@@ -10,6 +12,7 @@ const singleCampus = ({ campus, students }) => {
             <h1>{campus.name}</h1>
             <img src={campus.image} />
             <StudentAlbum students={students}/>
+            <StudentList students={students}/>
         </div>
     )
 }

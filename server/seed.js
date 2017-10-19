@@ -11,16 +11,20 @@ const {
 const data = {
   campus: [
     {
-      name: 'Kitauji'
+      name: 'Hibike Euphonium',
+      image : 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Hibike%21_Euphonium_logo.png'
     },
     {
-      name: 'Chuu2 School'
+      name: 'Chuu2Byou',
+      image: 'https://i.imgur.com/3oEnzOv.png'
     },
     {
-      name: 'Tamako Market School'
+      name: 'Tamako Market',
+      image: 'https://i.imgur.com/JihiIxk.png'
     },
     {
-      name: 'Hyouka School'
+      name: 'Hyouka',
+      image : 'https://fanart.tv/fanart/tv/257764/hdtvlogo/hyouka-573a027d39d9b.png'
     }
   ],
   student: [

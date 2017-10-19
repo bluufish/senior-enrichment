@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => (
-    <nav className= "navbar navbar-default">
+    <nav className="navbar navbar-default">
         <div className="container-fluid">
             <div className="navbar-header">
                 <ul className="nav navbar-nav">
                     <li>
-                        <NavLink to= '/' activeClassName="selected">Home</NavLink>
+                        <NavLink to='/' activeClassName="selected">Home</NavLink>
                     </li>
                     <li>
                         <NavLink to='/campuses' activeClassName="selected">Campus</NavLink>
@@ -16,10 +16,16 @@ const Navbar = () => (
                     <li>
                         <NavLink to='/students' activeClassName="selected">Students</NavLink>
                     </li>
+                    <li>
+                        <NavLink to='/students/add' activeClassName="selected">Add Students</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/campuses/add' activeClassName="selected">Add Campus</NavLink>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>   
+    </nav>
 )
 
 export default connect()(Navbar)

@@ -3,7 +3,7 @@ const { Campus, Student } = require('../../db/models')
 
 //Get all campus
 router.get('/', (req, res, next) => {
-    Campus.findAll({ include: [{ all: true }] })
+    Campus.findAll()
         .then(campuses => res.json(campuses))
         .catch(next)
 })

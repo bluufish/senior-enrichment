@@ -3,7 +3,7 @@ const { Campus, Student } = require('../../db/models');
 
 //Get all students 
 router.get('/', (req, res, next) => {
-    Student.findAll({ include: [{ all: true }] })
+    Student.findAll()
     .then(students => res.json(students))
     .catch(next);
 })
@@ -18,15 +18,15 @@ router.get('/:id', (req, res, next) => {
 })
 
 //Post new student
-router.post('/', (req, res, next) => {
-    Student.create(req.body)
+router.post('/add', (req, res, next) => {
+    Student.create(req.body) 
     .then(student => res.json(student))
     .catch(next)
 })
 
 //Put updated student info for one student
 router.put('/', (req,res,next) => {
-
+ 
 })
 
 //Delete a student

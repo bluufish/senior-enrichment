@@ -4,15 +4,19 @@ import { Route, Link } from 'react-router-dom'
 
 
 const singleStudent = ({ student, campuses }) => {
-    if (!student) return <div/>
+    if (!student) return <div />
     return (
         <div>
-            <h1>{student.name}</h1>
+            <h1>{student.name} </h1>
+            <h3>{student.email}</h3>
             <Link to={`/campuses/${student.campusId}`}>
-                <h4>{student.campus.name}</h4>
+                <h3>{student.campus.name}</h3>
+                <img src={student.image} />
+                <img src={student.campus.image} />
             </Link>
-            <img src={student.image} />
-        </div>   
+            <div>
+            </div>
+        </div>
     )
 }
 

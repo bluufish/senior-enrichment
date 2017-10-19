@@ -14,4 +14,5 @@ module.exports = db.define('campus', {
         type: Sequelize.STRING,
         defaultValue: 'https://i.imgur.com/ixa1EFT.png'
     }
-})
+}
+)

@@ -17,8 +17,14 @@ module.exports = db.define('student', {
             isEmail: true
         }
     },
-    image : {
+    image: {
         type: Sequelize.STRING,
-        defaultValue:'https://i.imgur.com/CXItI2O.png' 
-    },
-});
+        defaultValue: 'https://i.imgur.com/CXItI2O.png'
+    }
+},
+    {
+        defaultScope: {
+            include: [{ all: true }]
+        }
+    }
+);

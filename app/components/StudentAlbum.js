@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-export default function studentList({students}) {
-    if(!students) return <div/>
+export default function studentList({ students }) {
+    if (!students) return <div />
     return (
         <div style={{ fontSize: '2em' }}>
             <h1>Students</h1>

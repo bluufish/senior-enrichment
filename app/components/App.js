@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 import store, { fetchStudents, fetchCampuses } from '../store'
+import { connect } from 'react-redux'
 import CampusList from './CampusList'
 import SingleStudent from './SingleStudent'
 import StatefulStudentAlbum from './StatefulStudentAlbum'
@@ -8,14 +9,11 @@ import StatefulStudentList from './StatefulStudentList'
 import Navbar from './Navbar'
 import Home from './Home'
 import SingleCampus from './SingleCampus'
-import StudentList from './StudentList'
+import AddStudent from './AddStudent'
 
-export default class Main extends Component {
+class Main extends Component {
     componentDidMount() {
-        const campusesThunk = fetchCampuses()
-        const studentsThunk = fetchStudents()
-        store.dispatch(campusesThunk)
-        store.dispatch(studentsThunk)
+        this.props.initialData()
     }
 
     render() {
@@ -27,8 +25,9 @@ export default class Main extends Component {
                         <Route exact path='/campuses' component={CampusList} />
                         <Route path path='/campuses/:campusId' component={SingleCampus} />
                         <Route exact path='/students' component={StatefulStudentAlbum} />
+                        <Route exact path='/students/add' component={AddStudent} />
                         <Route path='/students/:studentId' component={SingleStudent} />
-                        <Route component={StatefulStudentList}/>
+                        <Route component={Home} />
                     </Switch>
                 </div>
             </Router>
@@ -36,5 +35,15 @@ export default class Main extends Component {
     }
 }
 
+const mapState = null
+const mapDispatch = dispatch => {
+    return {
+        initialData: _ => {
+            dispatch(fetchCampuses())
+            dispatch(fetchStudents())
+        }
+    }
+}
 
+export default connect(mapState, mapDispatch)(Main)
 
