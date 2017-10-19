@@ -29,7 +29,6 @@ export function fetchStudents() {
             .then(students => {
                 const action = getStudents(students)
                 dispatch(action)
-                //history.push(`/students/$()`)
             })
             .catch(console.error)            
     }

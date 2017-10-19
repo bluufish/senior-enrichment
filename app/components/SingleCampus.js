@@ -7,6 +7,7 @@ import DeleteButton from './FunctionButton'
 import {deleteCampus} from '../store'
 
 
+
 const singleCampus = ({ campus, students, remove }) => {
     if (!campus) return <div />
     return (
@@ -27,8 +28,10 @@ const mapState = ({ students, campuses }, Ownprops) => ({
     campus: campuses.find(campus => campus.id === +Ownprops.match.params.campusId)
 })
 
-const mapDispatch = (dispatch) => ({
-    remove: (campus) => {dispatch(deleteCampus(campus))}
+const mapDispatch = (dispatch, Ownprops) => ({
+    remove: (campus) => {
+        dispatch(deleteCampus(campus, Ownprops.history))
+    }
 }) 
 
 export default connect(mapState,mapDispatch)(singleCampus)
