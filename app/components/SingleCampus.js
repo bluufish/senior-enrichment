@@ -5,7 +5,7 @@ import StudentList from './TableGenerator'
 import DeleteButton from './FunctionButton'
 import { deleteCampus } from '../store'
 import Home from './Home'
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom'
 
 
 

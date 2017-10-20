@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import StudentAlbum from './StudentAlbum'
 import StudentList from './TableGenerator'
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom'
 
 
 function StatefulStudentAlbum(props) {

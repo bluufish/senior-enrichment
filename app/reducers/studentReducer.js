@@ -36,8 +36,7 @@ export function fetchStudents() {
                 const action = getStudents(students)
                 dispatch(action)
             })
-            .catch(console.error)
-    }
+            .catch(err => console.error('Failed to fetch students', err)    }
 }
 
 export function createStudent(student, history) {
@@ -49,7 +48,7 @@ export function createStudent(student, history) {
                 dispatch(action)
                 history.push(`/students/${student.id}`)
             })
-            .catch(console.error)
+            .catch(err => console.error('Failed to create student', err)
     }
 }
 

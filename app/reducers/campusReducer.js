@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 import { fetchStudents } from './studentReducer'
 
 //Action Types
@@ -37,6 +37,7 @@ export function fetchCampuses() {
                 const action = getCampuses(campuses)
                 dispatch(action)
             })
+            .catch(err => console.error('Failed to fetch', err)
     }
 }
 
@@ -49,6 +50,7 @@ export function postCampus(campus, history) {
                 dispatch(action)
                 history.push(`/campuses/${newCampus.id}`)
             })
+            .catch(err => console.error('Failed to post', err)
     }
 }
 
@@ -61,6 +63,7 @@ export function updateCampus(campus, id, history) {
                 dispatch(action)
                 history.push(`/campuses/${updatedCampus.id}`)
             })
+            .catch(err => console.error('Failed to update', err))
     }
 }
 
@@ -96,6 +99,6 @@ export default function reducer(state = [], action) {
             return state.filter(campus => campus.id !== action.campus.id)
 
         default:
-            return state;
+            return state
     }
 }

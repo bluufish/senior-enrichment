@@ -11,8 +11,6 @@ const campuses = require ('./campuses/campus.router')
 api.use('/students', students)
 api.use('/campuses', campuses)
 
-api.use((req, res, next) => {
-	res.status(404).send('Not found');
-  });
+
 
 module.exports = api

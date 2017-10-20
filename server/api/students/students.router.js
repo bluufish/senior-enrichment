@@ -1,20 +1,20 @@
-const router = require('express').Router();
-const { Campus, Student } = require('../../db/models');
+const router = require('express').Router()
+const { Campus, Student } = require('../../db/models')
 
 //Get all students 
 router.get('/', (req, res, next) => {
     Student.findAll()
         .then(students => res.json(students))
-        .catch(next);
+        .catch(next)
 })
 
 // Get a student by ID
 router.get('/:id', (req, res, next) => {
-    const id = req.params.id;
+    const id = req.params.id
 
     Student.findById(id)
         .then(student => res.json(student))
-        .catch(next);
+        .catch(next)
 })
 
 //Post new student
@@ -35,11 +35,11 @@ router.put('/:id', (req, res, next) => {
 
 //Delete a student
 router.delete('/:id', function (req, res, next) {
-    const id = req.params.id;
+    const id = req.params.id
 
     Student.destroy({ where: { id } })
         .then(() => res.status(204).end())
-        .catch(next);
-});
+        .catch(next)
+})
 
 module.exports = router 

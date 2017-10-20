@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import store, { fetchStudents, fetchCampuses } from '../store'
 import { connect } from 'react-redux'
 import CampusList from './CampusList'

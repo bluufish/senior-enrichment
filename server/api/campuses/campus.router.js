@@ -1,4 +1,4 @@
-const router = require('express').Router();
+const router = require('express').Router()
 const { Campus, Student } = require('../../db/models')
 
 //Get all campus
@@ -33,12 +33,12 @@ router.put('/:id', (req, res, next) => {
 
 //Delete a campus
 router.delete('/:id', function (req, res, next) {
-    const id = req.params.id;
+    const id = req.params.id
 
     Campus.destroy({ where: { id } })
         .then(() => res.status(204).end())
-        .catch(next);
-});
+        .catch(next)
+})
 
 module.exports = router
 
