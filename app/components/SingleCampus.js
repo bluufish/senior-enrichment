@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import StudentAlbum from './StudentAlbum'
-import StudentList from './StudentList'
+import StudentList from './TableGenerator'
 import DeleteButton from './FunctionButton'
 import { deleteCampus } from '../store'
 
@@ -18,7 +18,10 @@ const singleCampus = ({ campus, students, remove }) => {
                 <DeleteButton func={remove} item={campus} text={'Delete'} />
             </div>
             <StudentAlbum students={students} />
-            <StudentList students={students} />
+            <StudentList
+            headers={['ID', 'Name', 'Campus', 'Email', 'Edit', 'Delete']}
+            rows={students}
+        />
         </div>
     )
 }

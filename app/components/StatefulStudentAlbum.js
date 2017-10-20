@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import StudentAlbum from './StudentAlbum'
-import StudentList from './StudentList'
-import AddButton from './AddButton'
+import StudentList from './TableGenerator'
 
 function StatefulStudentAlbum(props) {
     return (
         <div>
-            <AddButton />
             <StudentAlbum students={props.students} />
-            <StudentList students={props.students} />
+            <StudentList
+                headers={['ID', 'Name', 'Campus', 'Email', 'Edit', 'Delete']}
+                rows={props.students}
+            />
         </div>
     )
 }

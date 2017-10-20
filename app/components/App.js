@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import CampusList from './CampusList'
 import SingleStudent from './SingleStudent'
 import StatefulStudentAlbum from './StatefulStudentAlbum'
-import StatefulStudentList from './StatefulStudentList'
 import Navbar from './Navbar'
 import Home from './Home'
 import SingleCampus from './SingleCampus'
@@ -19,23 +18,23 @@ class Main extends Component {
 
     render() {
         return (
-                <div id='main' className='container-fluid'>
-                    <Navbar />
-                    <Switch>
-                        <Route exact path='/campuses' component={CampusList} />
-                        <Route exact path='/campuses/add' component={AddCampus} />
-                        <Route path='/campuses/:campusId' component={SingleCampus} />
-                        <Route exact path='/students' component={StatefulStudentAlbum} />
-                        <Route exact path='/students/add' component={AddStudent} />
-                        <Route path='/students/:studentId' component={SingleStudent} />
-                        <Route component={Home} />
-                    </Switch>
-                </div>
+            <div id='main' className='container-fluid'>
+                <Navbar />
+                <Switch>
+                    <Route exact path='/campuses' component={CampusList} />
+                    <Route exact path='/campuses/add' component={AddCampus} />
+                    <Route path='/campuses/:campusId' component={SingleCampus} />
+                    <Route exact path='/students' component={StatefulStudentAlbum} />
+                    <Route exact path='/students/add' component={AddStudent} />
+                    <Route path='/students/:studentId' component={SingleStudent} />
+                    <Route render = {() => <Home students={this.props.students}/>} />
+                </Switch>
+            </div>
         )
     }
 }
 
-const mapState = null
+const mapState = state => ({students : state.students})
 const mapDispatch = dispatch => {
     return {
         initialData: _ => {
