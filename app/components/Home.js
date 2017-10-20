@@ -3,14 +3,9 @@ import { connect } from 'react-redux'
 import { Carousel } from 'react-responsive-carousel';
 import TableGenerator from './TableGenerator'
 
-const home = ({students}) => {
-    return (
-        <TableGenerator
-            headers={['ID', 'Name', 'Campus', 'Email', 'Edit', 'Delete']}
-            rows ={students}
-             />
-    )
-}
+const home = () => (
+    <img id='nichijou' src = 'http://i0.kym-cdn.com/photos/images/original/001/119/625/3c5.png' />
+)
 
 
 export default home

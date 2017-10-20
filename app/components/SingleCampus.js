@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import StudentAlbum from './StudentAlbum'
 import StudentList from './TableGenerator'
 import DeleteButton from './FunctionButton'
 import { deleteCampus } from '../store'
+import Home from './Home'
+import { Link, Route, Switch } from 'react-router-dom';
+
 
 
 
@@ -17,11 +19,21 @@ const singleCampus = ({ campus, students, remove }) => {
                 <img src={campus.image} />
                 <DeleteButton func={remove} item={campus} text={'Delete'} />
             </div>
-            <StudentAlbum students={students} />
-            <StudentList
-            headers={['ID', 'Name', 'Campus', 'Email', 'Edit', 'Delete']}
-            rows={students}
-        />
+            <Link to={`/campuses/${campus.id}/album`}>
+                <button className="btn-default">Album</button>
+            </Link>
+            <Link to={`/campuses/${campus.id}/list`}>
+                <button className="btn-default">List</button>
+            </Link>
+            <Switch>
+                <Route path={`/campuses/${campus.id}/album`} render={ _ => <StudentAlbum students={students} />} />
+                <Route path={`/campuses/${campus.id}/list`}
+                    render={ _ => <StudentList
+                        headers={['ID', 'Name', 'Campus', 'Email', 'Edit', 'Delete']}
+                        rows={students}
+                    />} />
+                <Route to={`/campuses/`} render={_ => <StudentAlbum students={students} />} />
+            </Switch>
         </div>
     )
 }

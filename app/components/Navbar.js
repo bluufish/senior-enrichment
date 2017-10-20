@@ -11,10 +11,10 @@ const Navbar = () => (
                         <NavLink to='/' activeClassName="selected">Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/campuses' activeClassName="selected">Campus</NavLink>
+                        <NavLink to='/campusesview' activeClassName="selected">Campus</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/students' activeClassName="selected">Students</NavLink>
+                        <NavLink to='/studentsview' activeClassName="selected">Students</NavLink>
                     </li>
                     <li>
                         <NavLink to='/students/add' activeClassName="selected">Add Student</NavLink>
