@@ -12,6 +12,7 @@ import AddStudent from './AddStudent'
 import AddCampus from './AddCampus'
 import Header from './Header'
 import EditStudent from './EditStudent'
+import EditCampus from './EditCampus'
 
 class Main extends Component {
     componentDidMount() {
@@ -27,6 +28,7 @@ class Main extends Component {
                     <Route exact path='/campuses/add' component={AddCampus} />
                     <Route exact path='/students/add' component={AddStudent} />
                     <Route path='/studentsedit/:id' component={EditStudent} />
+                    <Route path='/campusedit/:id' component={EditCampus} />
                     <Route path='/students/:studentId' component={SingleStudent} />
                     <Route path='/campuses/:campusId' component={SingleCampus} />
                     <Route path ='/campusedit/:id' />

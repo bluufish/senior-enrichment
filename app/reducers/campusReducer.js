@@ -5,6 +5,7 @@ import { fetchStudents } from './studentReducer'
 const GET_CAMPUSES = 'GET_CAMPUSES'
 const CREATE_CAMPUS = 'CREATE_CAMPUS'
 const DELETE = 'DELETE_CAMPUS'
+const UPDATE = 'UPDATE_CAMPUS'
 
 //Action Creators
 export const getCampuses = (campuses) => {
@@ -14,6 +15,11 @@ export const getCampuses = (campuses) => {
 
 export const createCampus = (campus) => {
     const action = { type: CREATE_CAMPUS, campus }
+    return action
+}
+
+export const updateACampus = (campus) => {
+    const action = {type: UPDATE, campus}
     return action
 }
 
@@ -46,6 +52,18 @@ export function postCampus(campus, history) {
     }
 }
 
+export function updateCampus(campus, id, history) {
+    return function thunk(dispatch) {
+        return axios.put(`/api/campuses/${id}`, campus)
+            .then(res => res.data)
+            .then(updatedCampus => {
+                const action = updateACampus(updatedCampus)
+                dispatch(action)
+                history.push(`/campuses/${updatedCampus.id}`)
+            })
+    }
+}
+
 export function deleteCampus(campus, history) {
     return function thunk(dispatch) {
         dispatch(deleteCamp(campus))
@@ -67,6 +85,12 @@ export default function reducer(state = [], action) {
 
         case CREATE_CAMPUS:
             return [...state, action.campus]
+
+        case UPDATE:
+            return state.map(campus => {
+                if (campus.id === action.campus.id) return action.campus
+                else return campus
+            })
 
         case DELETE:
             return state.filter(campus => campus.id !== action.campus.id)

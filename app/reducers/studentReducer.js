@@ -4,6 +4,7 @@ import axios from 'axios'
 const GET_STUDENTS = 'GET_STUDENTS'
 const ADD_STUDENT = 'ADD_STUDENT'
 const DELETE = 'DELETE_STUDENT'
+const UPDATE = 'UPDATE_STUDENT'
 
 //Action Creators
 export const getStudents = (students) => {
@@ -12,12 +13,17 @@ export const getStudents = (students) => {
 }
 
 export const addStudent = (student) => {
-    const action = {type:ADD_STUDENT, student}
+    const action = { type: ADD_STUDENT, student }
     return action
 }
 
 export const deleteAStudent = (student) => {
-    const action = {type:DELETE, student}
+    const action = { type: DELETE, student }
+    return action
+}
+
+export const updateAStudent = (student) => {
+    const action = { type: UPDATE, student }
     return action
 }
 
@@ -30,30 +36,43 @@ export function fetchStudents() {
                 const action = getStudents(students)
                 dispatch(action)
             })
-            .catch(console.error)            
+            .catch(console.error)
     }
 }
 
 export function createStudent(student, history) {
     return function thunk(dispatch) {
         return axios.post('/api/students/add', student)
-        .then(res => res.data)
-        .then (student => {
-            const action = addStudent(student)
-            dispatch(action)
-            history.push(`/students/${student.id}`)
+            .then(res => res.data)
+            .then(student => {
+                const action = addStudent(student)
+                dispatch(action)
+                history.push(`/students/${student.id}`)
             })
-        .catch(console.error)
+            .catch(console.error)
     }
 }
 
-export function deleteStudent(student){
+export function updateStudent(student, id, history) {
+    return function thunk(dispatch) {
+        return axios.put(`/api/students/${id}`, student)
+            .then(res => res.data)
+            .then(updatedStudent => {
+                dispatch(updateAStudent(updatedStudent))
+                history.push(`/students/${updatedStudent.id}`)
+            })
+            .catch(err => console.error('Could not update', err))
+    }
+}
+
+export function deleteStudent(student) {
     return function thunk(dispatch) {
         dispatch(deleteAStudent(student))
         return axios.delete(`/api/students/${student}`)
-        .catch(err => console.error('Could not delete', err))
+            .catch(err => console.error('Could not delete', err))
     }
 }
+
 
 
 //Reducer
@@ -67,6 +86,12 @@ export default function reducer(state = [], action) {
 
         case DELETE:
             return state.filter(student => student.id !== action.student)
+
+        case UPDATE: 
+            return state.map(student => {
+                if (student.id === action.student.id) return action.student
+                else return student
+            })
 
         default:
             return state
