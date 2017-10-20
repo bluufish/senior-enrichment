@@ -31,7 +31,6 @@ class Main extends Component {
                     <Route path='/campusedit/:id' component={EditCampus} />
                     <Route path='/students/:studentId' component={SingleStudent} />
                     <Route path='/campuses/:campusId' component={SingleCampus} />
-                    <Route path ='/campusedit/:id' />
                     <Route path='/campusesview' component={CampusList} />
                     <Route path='/studentsview' component={StatefulStudentAlbum} />
                     <Route exact path='/' component={Home} />

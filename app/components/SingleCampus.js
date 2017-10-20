@@ -17,6 +17,9 @@ const singleCampus = ({ campus, students, remove }) => {
             <h1>{campus.name}</h1>
             <div>
                 <img src={campus.image} />
+                <Link to={`/campusedit/${campus.id}`}> 
+                <button classnName = ""btn-default> Update </button> 
+                </Link>
                 <DeleteButton func={remove} item={campus} text={'Delete'} />
             </div>
             <Link to={`/campuses/${campus.id}/album`}>

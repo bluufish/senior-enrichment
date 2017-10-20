@@ -65,10 +65,11 @@ export function updateStudent(student, id, history) {
     }
 }
 
-export function deleteStudent(student) {
+export function deleteStudent(student, history) {
     return function thunk(dispatch) {
         dispatch(deleteAStudent(student))
         return axios.delete(`/api/students/${student}`)
+            .then( _ => history.push(`/studentsview`) )
             .catch(err => console.error('Could not delete', err))
     }
 }
