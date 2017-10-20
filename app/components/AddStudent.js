@@ -1,68 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import {createStudent} from '../reducers/studentReducer'
+import { createStudent } from '../reducers/studentReducer'
+import AddStudentForm from './EditForm'
 
-
-class AddButton extends Component {
-    constructor(props) {
-        super(props)
-        this.submitHandler = this.submitHandler.bind(this)
-    }
-
-    submitHandler(event) {
-        event.preventDefault()
-        this.props.submitHandler(event)
-    }
-
-    render() {
+const AddStudent = (props) => {
         return (
             <div>
-                <h3>Add a Student</h3>
-                <form onSubmit={event => this.submitHandler(event)}>
-
-                    <div className="form-group">
-                        <label className="col-sm-2 control-label">Student Name</label>
-                        <div className="col-sm-10">
-                            <input name="studentName" type="text" className="form-control" />
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <label className="col-sm-2 control-label">Student Email</label>
-                        <div className="col-sm-10">
-                            <input name="studentEmail" type="text" className="form-control" />
-                        </div>
-                    </div>
-
-                    <div className="form-group">
-                        <label className="col-sm-2 control-label">Campus</label>
-                        <div className="col-sm-10">
-                            <select name="selectedCampus" className="form-control">
-                                <option value="1">Hibike</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div className="col-sm-offset-2 col-sm-10">
-                        <button type="submit" className="btn btn-primary">SUBMIT</button>
-                    </div>
-                </form>
+                <h1>Add a Student</h1>
+                <AddStudentForm
+                    onSubmit = {props.submitHandler}
+                    dropdown = {{haveDropdown: true, items: props.campuses, label: 'Select a Campus'}}
+                    forms={[
+                        {label: 'Student Name', placeholder: 'Enter student name', name:'name'},
+                        {label: 'Student Email', placeholder: 'Enter an email', name: 'email'}
+                    ]}
+                />
             </div>
         )
-    }
 }
 
-const mapState = null
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+const mapState = state => ({ campuses: state.campuses })
+
 const mapDispatch = (dispatch, Ownprops) => {
     return {
         submitHandler: (event) => {
-            const name = event.target.studentName.value || 'Mobu'
-            const email = event.target.studentEmail.value 
-            const campusId = event.target.selectedCampus.value 
-            const student = {name, email, campusId}
+            event.preventDefault()
+            
+            const name = event.target.name.value || 'Mobu'
+            const email = event.target.email.value 
+            const campusId = event.target.select.value
+            const student = { name, email, campusId }
             dispatch(createStudent(student, Ownprops.history))
         }
     }
 }
 
-export default connect(mapState, mapDispatch)(AddButton)
+export default connect(mapState, mapDispatch)(AddStudent)

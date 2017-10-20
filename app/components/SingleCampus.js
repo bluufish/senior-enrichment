@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import StudentAlbum from './StudentAlbum'
 import StudentList from './StudentList'
 import DeleteButton from './FunctionButton'
-import {deleteCampus} from '../store'
+import { deleteCampus } from '../store'
 
 
 
@@ -32,7 +32,7 @@ const mapDispatch = (dispatch, Ownprops) => ({
     remove: (campus) => {
         dispatch(deleteCampus(campus, Ownprops.history))
     }
-}) 
+})
 
-export default connect(mapState,mapDispatch)(singleCampus)
+export default connect(mapState, mapDispatch)(singleCampus)
 

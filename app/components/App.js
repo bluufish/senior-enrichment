@@ -28,7 +28,6 @@ class Main extends Component {
                         <Route exact path='/students' component={StatefulStudentAlbum} />
                         <Route exact path='/students/add' component={AddStudent} />
                         <Route path='/students/:studentId' component={SingleStudent} />
-
                         <Route component={Home} />
                     </Switch>
                 </div>
