@@ -37,7 +37,7 @@ export function fetchCampuses() {
                 const action = getCampuses(campuses)
                 dispatch(action)
             })
-            .catch(err => console.error('Failed to fetch', err)
+            .catch(err => console.error('Failed to fetch', err))
     }
 }
 
@@ -50,7 +50,7 @@ export function postCampus(campus, history) {
                 dispatch(action)
                 history.push(`/campuses/${newCampus.id}`)
             })
-            .catch(err => console.error('Failed to post', err)
+            .catch(err => console.error('Failed to post', err))
     }
 }
 
