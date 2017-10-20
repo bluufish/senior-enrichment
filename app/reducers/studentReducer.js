@@ -50,7 +50,7 @@ export function createStudent(student, history) {
 export function deleteStudent(student){
     return function thunk(dispatch) {
         dispatch(deleteAStudent(student))
-        return axios.delete(`/api/students/${student.id}`)
+        return axios.delete(`/api/students/${student}`)
         .catch(err => console.error('Could not delete', err))
     }
 }
@@ -66,7 +66,7 @@ export default function reducer(state = [], action) {
             return [...state, action.student]
 
         case DELETE:
-            return state.filter(student => student.id !== action.student.id)
+            return state.filter(student => student.id !== action.student)
 
         default:
             return state

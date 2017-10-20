@@ -11,6 +11,7 @@ import SingleCampus from './SingleCampus'
 import AddStudent from './AddStudent'
 import AddCampus from './AddCampus'
 import Header from './Header'
+import EditStudent from './EditStudent'
 
 class Main extends Component {
     componentDidMount() {
@@ -23,12 +24,14 @@ class Main extends Component {
                 <Header />
                 <Navbar />
                 <Switch>
-                    <Route path='/campusesview' component={CampusList} />
-                    <Route path='/studentsview' component={StatefulStudentAlbum} />
                     <Route exact path='/campuses/add' component={AddCampus} />
                     <Route exact path='/students/add' component={AddStudent} />
-                    <Route path='/campuses/:campusId' component={SingleCampus} />
+                    <Route path='/studentsedit/:id' component={EditStudent} />
                     <Route path='/students/:studentId' component={SingleStudent} />
+                    <Route path='/campuses/:campusId' component={SingleCampus} />
+                    <Route path ='/campusedit/:id' />
+                    <Route path='/campusesview' component={CampusList} />
+                    <Route path='/studentsview' component={StatefulStudentAlbum} />
                     <Route exact path='/' component={Home} />
                     <Redirect to='/' />
                 </Switch>
@@ -37,7 +40,7 @@ class Main extends Component {
     }
 }
 
-const mapState = state => ({ students: state.students })
+const mapState = state => ({ students: state.students, campuses: state.campuses })
 const mapDispatch = dispatch => {
     return {
         initialData: _ => {

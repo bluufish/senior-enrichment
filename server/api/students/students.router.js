@@ -26,9 +26,12 @@ router.post('/add', (req, res, next) => {
 })
 
 //Put updated student info for one student
-router.put('/', (req, res, next) => {
-
-})
+router.put('/:id', (req, res, next) => {
+    Student.update(req.body, {where: {id: req.params.id}})
+    .then( _ => Student.findOne({ where: { id: req.params.id }})
+    .then(foundStudent => res.json(foundStudent))
+    .catch(next)
+)})
 
 //Delete a student
 router.delete('/:id', function (req, res, next) {

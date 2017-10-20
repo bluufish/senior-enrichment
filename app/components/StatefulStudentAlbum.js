@@ -16,12 +16,13 @@ function StatefulStudentAlbum(props) {
                 <button className="btn-default">List</button>
             </Link>
             <Switch>
-                <Route path={`/studentsview/album`} render={_ => <StudentAlbum students={props.students} />} />
-                <Route path={`/studentsview/list`} render={_ => <StudentList
-                    headers={['ID', 'Name', 'Campus', 'Email', 'Edit', 'Delete']}
-                    rows={props.students}
-                />} />
-                <Route to = {'/students'} render={_ => <StudentAlbum students={props.students} />} />
+                <Route
+                    exact path={`/studentsview/list`}
+                    render={_ => <StudentList
+                        headers={['ID', 'Name', 'Campus', 'Email', 'Edit', 'Delete']}
+                        rows={props.students}
+                    />} />
+                <Route to={`/studentsview/album`} render={_ => <StudentAlbum students={props.students} />} />
             </Switch>
         </div>
     )

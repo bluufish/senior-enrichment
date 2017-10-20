@@ -4,11 +4,11 @@ const editForm = ({ forms, onSubmit, submitText = 'Submit', dropdown }) => {
 
     return (
         <form onSubmit={(event) => onSubmit(event)}>
-            {forms.map(({ label, name, placeholder }) =>
+            {forms.map(({ label, name, placeholder, value }) =>
                 <div className="form-group" key={name}>
                     <label className="col-sm-2 control-label">{label}</label>
                     <div className="col-sm-10">
-                        <input name={name} type="text" className="form-control" placeholder={placeholder} />
+                        <input name={name} type="text" className="form-control" placeholder={placeholder} defaultValue={value} />
                     </div>
                 </div>)}
 
@@ -16,7 +16,7 @@ const editForm = ({ forms, onSubmit, submitText = 'Submit', dropdown }) => {
                 <div className="form-group">
                     <label className="col-sm-2 control-label">{dropdown.label}:</label>
                     <div className="col-sm-10">
-                        <select name='select' className="form-control">
+                        <select name='select' className="form-control" defaultValue={dropdown.defaultValue}>
                             {dropdown.items.map(item =>
                                 <option key={item.id} value={item.id}>{item.name}</option>
                             )}

@@ -24,9 +24,12 @@ router.post('/add', (req, res, next) => {
 })
 
 //Put updated campus info for one campus
-router.put('/', (req, res, next) => {
-
-})
+router.put('/:id', (req, res, next) => {
+    Campus.update(req.body, {where: {id: req.params.id}})
+    .then( _ => Campus.findOne({ where: { id: req.params.id }})
+    .then(foundCampus => res.json(foundCampus))
+    .catch(next)
+)})
 
 //Delete a campus
 router.delete('/:id', function (req, res, next) {

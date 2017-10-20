@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import StudentDelete from './FunctionButton'
+import { Router, Link } from 'react-router-dom'
+import StudentButton from './FunctionButton'
 import { connect } from 'react-redux'
 import { deleteStudent } from '../store'
 
@@ -21,7 +21,7 @@ const tableGenerator = ({ headers, rows, remove }) => (
                     <tr key={id}>
                         <th scope="row">{id}</th>
                         <td>
-                            <Link to={`/students/${id}`} style={{ fontSize: '2em', color: "Black" }}>
+                            <Link to={`/students/edit/${id}`} style={{ fontSize: '2em', color: "Black" }}>
                                 {name}
                             </Link>
                         </td>
@@ -31,8 +31,12 @@ const tableGenerator = ({ headers, rows, remove }) => (
                             </Link>
                         </td>
                         <td>{email}</td>
-                        <td>edit</td>
-                        <td><StudentDelete func={remove} item={id} text={'Delete'} /></td>
+                        <td>
+                            <Link to = {`/studentsedit/${id}`}>
+                                <button> EDIT </button>
+                            </Link>
+                        </td>
+                        <td><StudentButton func={remove} item={id} text={'Delete'} /></td>
                     </tr>
                 ))
             }
