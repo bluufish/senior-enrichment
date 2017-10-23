@@ -21,7 +21,7 @@ const tableGenerator = ({ headers, rows, remove }) => (
                     <tr key={id}>
                         <th scope="row">{id}</th>
                         <td>
-                            <Link to={`/students/edit/${id}`} style={{ fontSize: '2em', color: "Black" }}>
+                            <Link to={`/students/${id}`} style={{ fontSize: '2em', color: "Black" }}>
                                 {name}
                             </Link>
                         </td>
